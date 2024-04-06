@@ -24,7 +24,7 @@ public class MapperProfile : AutoMapper.Profile
         CreateMap<Station, StationDto>();
 
         CreateMap<Battery, BatteryDto>()
-            .ForMember(b => b.modelDto,
+            .ForMember(b => b.model,
             opt => opt.MapFrom(src => new ModelDto {
                 id = src.model.Id,
                 name = src.model.name,
@@ -40,7 +40,7 @@ public class MapperProfile : AutoMapper.Profile
                     {
                         id = b.Id,
                         maxCapacity = b.maxCapacity,
-                        modelDto = new ModelDto
+                        model = new ModelDto
                         {
                             id = b.model.Id,
                             name = b.model.name,

@@ -7,7 +7,7 @@ namespace HackItAll_Backend.DTOs.Battery
     public class BatteryDto
     {
         public Guid id { get; set; }
-        public ModelDto modelDto { get; set; }
+        public ModelDto model { get; set; }
 
         public ReservationDto? reservationDto { get; set; }
 
