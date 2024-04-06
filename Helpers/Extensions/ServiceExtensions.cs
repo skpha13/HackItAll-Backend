@@ -1,7 +1,4 @@
-﻿using backend.Helpers.Seeders;
-using backend.Repositories.TestRepository;
-using backend.Services.TestService;
-using HackItAll_Backend.Helpers.Seeders;
+﻿using HackItAll_Backend.Helpers.Seeders;
 using HackItAll_Backend.Repositories;
 using HackItAll_Backend.Services;
 

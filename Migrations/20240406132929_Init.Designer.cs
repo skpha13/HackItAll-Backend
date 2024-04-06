@@ -12,8 +12,8 @@ using backend.Data;
 namespace HackItAllBackend.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240406112507_AddedReservationModel")]
-    partial class AddedReservationModel
+    [Migration("20240406132929_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -171,27 +171,6 @@ namespace HackItAllBackend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Stations");
-                });
-
-            modelBuilder.Entity("backend.Models.Test", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("LastModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tests");
                 });
 
             modelBuilder.Entity("HackItAll_Backend.Models.Battery", b =>

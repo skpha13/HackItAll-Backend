@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using backend.Models;
-using backend.Repositories.TestRepository;
 using HackItAll_Backend.DTOs.Car;
 using HackItAll_Backend.Models;
 using HackItAll_Backend.Repositories;

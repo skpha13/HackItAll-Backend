@@ -170,27 +170,6 @@ namespace HackItAllBackend.Migrations
                     b.ToTable("Stations");
                 });
 
-            modelBuilder.Entity("backend.Models.Test", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("LastModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tests");
-                });
-
             modelBuilder.Entity("HackItAll_Backend.Models.Battery", b =>
                 {
                     b.HasOne("HackItAll_Backend.Models.Model", "model")

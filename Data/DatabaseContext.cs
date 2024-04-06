@@ -6,8 +6,6 @@ namespace backend.Data;
 
 public class DatabaseContext: DbContext
 {
-    public DbSet<Test> Tests { get; set; }
-
     public DbSet<Model> Models { get; set; }
 
     public DbSet<Battery> Batteries { get; set; }

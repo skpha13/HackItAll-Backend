@@ -1,6 +1,5 @@
 using backend.Data;
 using backend.Helpers.Extensions;
-using backend.Helpers.Seeders;
 using HackItAll_Backend.Helpers.Seeders;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,7 +26,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DatabaseContext>(
-	options => options.UseSqlServer(builder.Configuration.GetConnectionString("MyConnection")));
+	options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddRepositories();
 builder.Services.AddServices();
