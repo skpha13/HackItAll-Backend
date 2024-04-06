@@ -1,4 +1,7 @@
-﻿using backend.Models;
+﻿using AutoMapper;
+using backend.Models;
+using HackItAll_Backend.DTOs.Battery;
+using HackItAll_Backend.DTOs.Station;
 using HackItAll_Backend.Models;
 using HackItAll_Backend.Repositories;
 
@@ -7,10 +10,17 @@ namespace HackItAll_Backend.Services
     public class BatteryService
     {
         private readonly BatteryRepository _batteryRepository;
+        private readonly CarRepository _carRepository;
+        private readonly IMapper _mapper;
 
-        public BatteryService(BatteryRepository batteryRepository)
+        public BatteryService(
+            BatteryRepository batteryRepository, 
+            CarRepository carRepository,
+            IMapper mapper)
         {
+            _carRepository = carRepository;
             _batteryRepository = batteryRepository;
+            _mapper  = mapper;
         }
 
         public async Task<List<Battery>> GetAll()
@@ -34,6 +44,13 @@ namespace HackItAll_Backend.Services
         {
             _batteryRepository.Update(battery);
             await _batteryRepository.SaveAsync();
+        }
+
+        public async Task<List<BatteryWithStationDto>> getForCarBrandAndModel(string brand, string model)
+        {
+            Guid batteryModelId = await _carRepository.getBatteryModel(brand, model);
+            List<Battery> batteries = await _batteryRepository.getForModelId(batteryModelId);
+            return _mapper.Map<List<BatteryWithStationDto>>(batteries).ToList();
         }
     }
 }

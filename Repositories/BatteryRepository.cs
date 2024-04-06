@@ -1,6 +1,7 @@
 ﻿using backend.Data;
 using backend.Repositories.GenericRepository;
 using HackItAll_Backend.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace HackItAll_Backend.Repositories
 {
@@ -8,6 +9,14 @@ namespace HackItAll_Backend.Repositories
     {
         public BatteryRepository(DatabaseContext dbContext) : base(dbContext)
         {
+        }
+
+        public async Task<List<Battery>> getForModelId(Guid guid)
+        {
+            return await _table.Where(b => b.modelId == guid)
+                .Include(b => b.model)
+                .Include(b => b.station)
+                .ToListAsync();
         }
     }
 }

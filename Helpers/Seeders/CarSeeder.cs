@@ -16,10 +16,10 @@ namespace HackItAll_Backend.Helpers.Seeders
         {
             if (!_dbContext.Cars.Any())
             {
-                var stations = _dbContext.Models.ToList();
+                var models = _dbContext.Models.ToList();
 
                 var cars = new List<Car>();
-                foreach (var model in stations)
+                foreach (var model in models)
                 {
                     cars.Add(new Car()
                     {

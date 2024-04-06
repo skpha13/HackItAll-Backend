@@ -20,6 +20,8 @@ public class MapperProfile : AutoMapper.Profile
         CreateMap<Model, ModelDto>();
         CreateMap<ModelDto, Model>();
 
+        CreateMap<Station, StationDto>();
+
         CreateMap<Battery, BatteryDto>()
             .ForMember(b => b.modelDto,
             opt => opt.MapFrom(src => new ModelDto {
@@ -44,11 +46,14 @@ public class MapperProfile : AutoMapper.Profile
                         },
                         capacity = b.capacity,
                         state = b.state,
-                        percentage = 1.0f * b.capacity / b.maxCapacity,
+                        percentage = 100.0f * b.capacity / b.maxCapacity,
 
                     }
                 )));
         CreateMap<StationWithBatteriesDto, Station>();
+
+        CreateMap<Battery, BatteryWithStationDto>();
+            //.ForMember(s => s.station, opt => opt.MapFrom(src => new StationDto()))
 
 
     }

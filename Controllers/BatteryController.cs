@@ -23,6 +23,12 @@ namespace HackItAll_Backend.Controllers
             return Ok(await _batteryService.GetAll());
         }
 
+        [HttpGet("forCar")]
+        public async Task<IActionResult> GetAllForCarBrandAndModel([FromQuery] string brand, [FromQuery] string model)
+        {
+            return Ok(await _batteryService.getForCarBrandAndModel(brand, model));
+        }
+
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromBody] Battery battery)
         {
