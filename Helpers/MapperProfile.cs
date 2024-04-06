@@ -10,6 +10,9 @@ public class MapperProfile : AutoMapper.Profile
         CreateMap<Car, CarBrandDto>();
         CreateMap<Car, CarModelDto>();
         CreateMap<string, CarBrandDto>()
-            .ForMember(c => c.brand, opt => opt.MapFrom(src => src)); ;
+            .ForMember(c => c.brand, opt => opt.MapFrom(src => src));
+        CreateMap<string, CarModelDto>()
+            .ForMember(c => c.model, opt => opt.MapFrom(src => src));
+
     }
 }

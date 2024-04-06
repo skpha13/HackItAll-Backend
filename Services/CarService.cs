@@ -46,5 +46,11 @@ namespace HackItAll_Backend.Services
             List<string> brands = _carRepository.getBrands();
             return _mapper.Map<List<CarBrandDto>>(brands);
         }
+
+        public async Task<List<CarModelDto>> GetModels(string brand)
+        {
+            List<string> models = _carRepository.getModels(brand);
+            return _mapper.Map<List<CarModelDto>>(models);
+        }
     }
 }

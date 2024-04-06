@@ -1,5 +1,6 @@
 ﻿using backend.Models;
 using backend.Services.TestService;
+using HackItAll_Backend.DTOs.Car;
 using HackItAll_Backend.Models;
 using HackItAll_Backend.Services;
 using Microsoft.AspNetCore.Cors;
@@ -29,6 +30,12 @@ namespace HackItAll_Backend.Controllers
         public async Task<IActionResult> GetBrands()
         {
             return Ok(await _carService.GetBrands());
+        }
+
+        [HttpGet("models")]
+        public async Task<IActionResult> GetModels([FromQuery] string brand)
+        {
+            return Ok(await _carService.GetModels(brand));
         }
 
         [HttpPost("create")]
