@@ -20,22 +20,27 @@ namespace HackItAll_Backend.Helpers.Seeders
                 {
                     new Model()
                     {
-                       name = "model 1"
+                        Id = new Guid(),
+                        name = "model 1"
                     },
                     new Model()
                     {
-                       name = "model 2"
+                        Id = new Guid(),
+                        name = "model 2"
                     },
                     new Model()
                     {
+                        Id = new Guid(),
                         name = "model 3"
                     },
                         new Model()
                     {
+                        Id = new Guid(),
                         name = "model 4"
                     },
                     new Model()
                     {
+                        Id = new Guid(),
                         name = "model 5"
                     }
                 };

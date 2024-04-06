@@ -13,7 +13,5 @@ namespace HackItAll_Backend.Models
         public int chargingStations { get; set; }
 
         public ICollection<Battery>? batteries {  get; set; }
-
-
     }
 }

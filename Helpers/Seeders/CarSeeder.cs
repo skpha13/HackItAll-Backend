@@ -50,8 +50,6 @@ namespace HackItAll_Backend.Helpers.Seeders
               
                 _dbContext.Cars.AddRange(cars);
                 _dbContext.SaveChanges();
-                
-                
             }
         }
     }

@@ -10,7 +10,5 @@ namespace HackItAll_Backend.Models
         public Collection<Battery>? batteries { get; set; }
 
         public Collection<Car>? cars { get; set; }
-
-        public Model() { }
     }
 }

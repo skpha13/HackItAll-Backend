@@ -36,24 +36,6 @@ namespace HackItAll_Backend.Helpers.Seeders
                             capacity = 700,
                             state = State.CHARGING,
                         });
-
-                        batteries.Add(new Battery
-                        {
-                            modelId = model.Id,
-                            stationId = station.Id,
-                            maxCapacity = 500,
-                            capacity = 500,
-                            state = State.RESERVED,
-                        });
-
-                        batteries.Add(new Battery
-                        {
-                            modelId = model.Id,
-                            stationId = station.Id,
-                            maxCapacity = 1000,
-                            capacity = 700,
-                            state = State.STORED,
-                        });
                     }
                 }
             

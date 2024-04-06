@@ -20,30 +20,34 @@ namespace HackItAll_Backend.Helpers.Seeders
                 {
                     new Station()
                     {
+                      Id = new Guid(),
                       coordinateX = 44.46f,
                       coordinateY = 26.0f,
-                      address = "address 1",
+                      address = "Str. Gheorghe Sincai",
                       chargingStations = 3,
                     },
                     new Station()
                     {
-                      coordinateX = 44.41f,
-                      coordinateY = 26.10f,
-                      address = "address 2",
+                      Id = new Guid(),
+                      coordinateX = 44.43f,
+                      coordinateY = 26.11f,
+                      address = "Str. Marasesti",
                       chargingStations = 4,
                     },
                     new Station()
                     {
-                      coordinateX = 44.463f,
-                      coordinateY = 26.086f,
-                      address = "address 3",
+                      Id = new Guid(),
+                      coordinateX = 44.42f,
+                      coordinateY = 26.12f,
+                      address = "Str. Brancoveanu",
                       chargingStations = 10,
                     },
                     new Station()
                     {
-                      coordinateX = 44.434f,
-                      coordinateY = 26.044f,
-                      address = "address 4",
+                      Id = new Guid(),
+                      coordinateX = 44.46f,
+                      coordinateY = 26.18f,
+                      address = "Str. Mihai Eminescu",
                       chargingStations = 5,
                     },
                 };

@@ -10,7 +10,5 @@ namespace HackItAll_Backend.Models
         public Model batteryModel { get; set; }
 
         public Guid batteryModelId { get; set; }
-
-        public Car() { }
     }
 }
