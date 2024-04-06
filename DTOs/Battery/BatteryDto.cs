@@ -1,4 +1,5 @@
 ﻿using HackItAll_Backend.DTOs.Model;
+using HackItAll_Backend.DTOs.Reservation;
 using HackItAll_Backend.Models;
 
 namespace HackItAll_Backend.DTOs.Battery
@@ -7,6 +8,8 @@ namespace HackItAll_Backend.DTOs.Battery
     {
         public Guid id { get; set; }
         public ModelDto modelDto { get; set; }
+
+        public ReservationDto? reservationDto { get; set; }
 
         public int maxCapacity { get; set; }
 

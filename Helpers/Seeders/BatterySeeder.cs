@@ -29,6 +29,7 @@ namespace HackItAll_Backend.Helpers.Seeders
                     {
                         batteries.Add(new Battery
                         {
+                     
                             modelId = model.Id,
                             stationId = station.Id,
                             maxCapacity = 1000,

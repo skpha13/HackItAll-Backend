@@ -35,22 +35,27 @@ public class MapperProfile : AutoMapper.Profile
         CreateMap<Station, StationWithBatteriesDto>()
             .ForMember(s => s.batteries, opt => opt.MapFrom(src => src.batteries.Select(
                 b =>
-                
+
                     new BatteryDto
                     {
-                        id = b.model.Id,
+                        id = b.Id,
                         maxCapacity = b.maxCapacity,
                         modelDto = new ModelDto
                         {
                             id = b.model.Id,
                             name = b.model.name,
                         },
+                        reservationDto = new ReservationDto
+                        {
+                            name = b.model.name,
+                            batteryId = b.Id
+                        },
                         capacity = b.capacity,
                         state = b.state,
                         percentage = 100.0f * b.capacity / b.maxCapacity,
 
                     }
-                )));
+                ))); ;
         CreateMap<StationWithBatteriesDto, Station>();
 
         CreateMap<Battery, BatteryWithStationDto>();

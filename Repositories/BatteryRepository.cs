@@ -16,6 +16,7 @@ namespace HackItAll_Backend.Repositories
             return await _table.Where(b => b.modelId == guid)
                 .Include(b => b.model)
                 .Include(b => b.station)
+                .Include(b => b.reservation)
                 .ToListAsync();
         }
     }
