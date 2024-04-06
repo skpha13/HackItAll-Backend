@@ -1,6 +1,7 @@
 using backend.Data;
 using backend.Helpers.Extensions;
 using backend.Helpers.Seeders;
+using HackItAll_Backend.Helpers.Seeders;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,7 +27,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DatabaseContext>(
-	options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+	options => options.UseSqlServer(builder.Configuration.GetConnectionString("MyConnection")));
 
 builder.Services.AddRepositories();
 builder.Services.AddServices();
@@ -58,7 +59,12 @@ void SeedData(IHost app)
 	var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
 	using (var scope = scopedFactory.CreateScope())
 	{
-		var testService = scope.ServiceProvider.GetService<TestSeeder>();
-		testService.SeedInitialTests();
+		//var testService = scope.ServiceProvider.GetService<TestSeeder>();
+		//testService.SeedInitialTests();
+
+		scope.ServiceProvider.GetService<ModelSeeder>().seedInitialModels();
+		scope.ServiceProvider.GetService<CarSeeder>().seedInitialCars();
+		scope.ServiceProvider.GetService<StationSeeder>().seedInitialStations();
+		scope.ServiceProvider.GetService<BatterySeeder>().seedInitialBatteries();
 	}
 }

@@ -12,8 +12,8 @@ using backend.Data;
 namespace HackItAllBackend.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240405175459_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20240406043234_InitialCreate2")]
+    partial class InitialCreate2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

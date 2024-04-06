@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using backend.Data;
 
@@ -11,9 +12,11 @@ using backend.Data;
 namespace HackItAllBackend.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240406105846_CreatedModels")]
+    partial class CreatedModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,9 +46,6 @@ namespace HackItAllBackend.Migrations
                     b.Property<Guid>("modelId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("reservationId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("state")
                         .HasColumnType("int");
 
@@ -55,10 +55,6 @@ namespace HackItAllBackend.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("modelId");
-
-                    b.HasIndex("reservationId")
-                        .IsUnique()
-                        .HasFilter("[reservationId] IS NOT NULL");
 
                     b.HasIndex("stationId");
 
@@ -114,30 +110,6 @@ namespace HackItAllBackend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Models");
-                });
-
-            modelBuilder.Entity("HackItAll_Backend.Models.Reservation", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("LastModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("batteryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("HackItAll_Backend.Models.Station", b =>
@@ -199,10 +171,6 @@ namespace HackItAllBackend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HackItAll_Backend.Models.Reservation", "reservation")
-                        .WithOne("battery")
-                        .HasForeignKey("HackItAll_Backend.Models.Battery", "reservationId");
-
                     b.HasOne("HackItAll_Backend.Models.Station", "station")
                         .WithMany("batteries")
                         .HasForeignKey("stationId")
@@ -210,8 +178,6 @@ namespace HackItAllBackend.Migrations
                         .IsRequired();
 
                     b.Navigation("model");
-
-                    b.Navigation("reservation");
 
                     b.Navigation("station");
                 });
@@ -232,12 +198,6 @@ namespace HackItAllBackend.Migrations
                     b.Navigation("batteries");
 
                     b.Navigation("cars");
-                });
-
-            modelBuilder.Entity("HackItAll_Backend.Models.Reservation", b =>
-                {
-                    b.Navigation("battery")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("HackItAll_Backend.Models.Station", b =>
