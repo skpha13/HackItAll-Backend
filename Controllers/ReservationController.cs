@@ -1,4 +1,5 @@
-﻿using HackItAll_Backend.Models;
+﻿using HackItAll_Backend.DTOs.Reservation;
+using HackItAll_Backend.Models;
 using HackItAll_Backend.Services;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace HackItAll_Backend.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<IActionResult> Create([FromBody] Reservation reservation)
+        public async Task<IActionResult> Create([FromBody] ReservationDto reservation)
         {
             await _reservationService.Create(reservation);
             return Ok();

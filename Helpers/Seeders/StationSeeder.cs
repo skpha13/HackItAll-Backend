@@ -20,29 +20,29 @@ namespace HackItAll_Backend.Helpers.Seeders
                 {
                     new Station()
                     {
-                      coordinateX = 123.123f,
-                      coordinateY = 123.123f,
+                      coordinateX = 44.46f,
+                      coordinateY = 26.0f,
                       address = "address 1",
                       chargingStations = 3,
                     },
                     new Station()
                     {
-                      coordinateX = 2344f,
-                      coordinateY = 42342f,
+                      coordinateX = 44.41f,
+                      coordinateY = 26.10f,
                       address = "address 2",
                       chargingStations = 4,
                     },
                     new Station()
                     {
-                      coordinateX = 8732f,
-                      coordinateY = 785f,
+                      coordinateX = 44.463f,
+                      coordinateY = 26.086f,
                       address = "address 3",
                       chargingStations = 10,
                     },
                     new Station()
                     {
-                      coordinateX = 28796f,
-                      coordinateY = 27896f,
+                      coordinateX = 44.434f,
+                      coordinateY = 26.044f,
                       address = "address 4",
                       chargingStations = 5,
                     },

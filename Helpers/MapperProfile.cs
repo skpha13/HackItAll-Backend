@@ -1,6 +1,7 @@
 ﻿using HackItAll_Backend.DTOs.Battery;
 using HackItAll_Backend.DTOs.Car;
 using HackItAll_Backend.DTOs.Model;
+using HackItAll_Backend.DTOs.Reservation;
 using HackItAll_Backend.DTOs.Station;
 using HackItAll_Backend.Models;
 
@@ -53,8 +54,9 @@ public class MapperProfile : AutoMapper.Profile
         CreateMap<StationWithBatteriesDto, Station>();
 
         CreateMap<Battery, BatteryWithStationDto>();
-            //.ForMember(s => s.station, opt => opt.MapFrom(src => new StationDto()))
+        //.ForMember(s => s.station, opt => opt.MapFrom(src => new StationDto()))
 
-
+        CreateMap<Reservation, ReservationDto>();
+        CreateMap<ReservationDto, Reservation>();
     }
 }
