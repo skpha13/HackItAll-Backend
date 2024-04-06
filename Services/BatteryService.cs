@@ -23,9 +23,10 @@ namespace HackItAll_Backend.Services
             _mapper  = mapper;
         }
 
-        public async Task<List<Battery>> GetAll()
+        public async Task<List<BatteryWithStationDto>> GetAll()
         {
-            return await _batteryRepository.GetAllAsync();
+            List<Battery> batteries = await _batteryRepository.GetAllAsync();
+            return _mapper.Map<List<BatteryWithStationDto>>(batteries);
         }
 
         public async Task Create(Battery battery)

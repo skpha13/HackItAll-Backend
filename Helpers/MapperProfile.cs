@@ -59,7 +59,6 @@ public class MapperProfile : AutoMapper.Profile
         CreateMap<StationWithBatteriesDto, Station>();
 
         CreateMap<Battery, BatteryWithStationDto>();
-        //.ForMember(s => s.station, opt => opt.MapFrom(src => new StationDto()))
 
         CreateMap<Reservation, ReservationDto>();
         CreateMap<ReservationDto, Reservation>();

@@ -19,5 +19,13 @@ namespace HackItAll_Backend.Repositories
                 .Include(b => b.reservation)
                 .ToListAsync();
         }
+
+        public new async Task<List<Battery>> GetAllAsync()
+        {
+            return await _table
+                .Include(b => b.model)
+                .Include(b => b.station)
+                .ToListAsync();
+        }
     }
 }
