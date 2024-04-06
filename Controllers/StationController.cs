@@ -19,9 +19,9 @@ namespace HackItAll_Backend.Controllers
         }
 
         [HttpGet("all")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(string brand = null, string model = null)
         {
-            return Ok(await _stationService.GetAllWithBatteries());
+            return Ok(await _stationService.GetAllWithBatteries(brand, model));
         }
 
         [HttpPost("create")]

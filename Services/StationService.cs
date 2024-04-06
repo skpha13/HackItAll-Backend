@@ -9,13 +9,16 @@ namespace HackItAll_Backend.Services
     public class StationService
     {
         private readonly StationRepository _stationRepository;
+        private readonly CarRepository _carRepository;
         private readonly IMapper _mapper;
 
         public StationService(StationRepository stationRepository, 
-            IMapper mapper)
+            IMapper mapper,
+            CarRepository carRepository)
         {
             _stationRepository = stationRepository;
             _mapper = mapper;
+            _carRepository = carRepository;
         }
 
         public async Task<List<Station>> GetAll()
@@ -24,9 +27,13 @@ namespace HackItAll_Backend.Services
             return stations;
         }
 
-        public async Task<List<StationWithBatteriesDto>> GetAllWithBatteries()
+        public async Task<List<StationWithBatteriesDto>> GetAllWithBatteries(string brand = null, string model = null)
         {
-            List<Station> stations = await _stationRepository.GetWithBatteriesAsync();
+            Guid? batteryModelId = null;
+            if(brand != null && model != null) {
+                batteryModelId = await _carRepository.getBatteryModel(brand, model);
+            }
+            List<Station> stations = await _stationRepository.GetWithBatteriesAsync(batteryModelId);
             return _mapper.Map<List<StationWithBatteriesDto>>(stations);
         }
 

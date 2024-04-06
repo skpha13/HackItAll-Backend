@@ -11,10 +11,10 @@ namespace HackItAll_Backend.Repositories
         {
         }
 
-        public async Task<List<Station>> GetWithBatteriesAsync()
+        public async Task<List<Station>> GetWithBatteriesAsync(Guid? modelId = null)
         {
             List<Station> stations = await _dbContext.Stations
-                .Include(s => s.batteries)
+                .Include(s => s.batteries.Where(b => (modelId == null) || (modelId == b.modelId)))
                 .ThenInclude(b => b.model)
                 .ToListAsync();
             return stations;
