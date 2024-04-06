@@ -1,9 +1,9 @@
-﻿using backend.Models.Base;
+﻿using HackItAll_Backend.DTOs.Battery;
 using System.Collections.ObjectModel;
 
-namespace HackItAll_Backend.Models
+namespace HackItAll_Backend.DTOs.Station
 {
-    public class Station : BaseEntity
+    public class StationWithBatteriesDto
     {
         public float coordinateX {  get; set; }
         public float coordinateY { get; set; }
@@ -12,8 +12,6 @@ namespace HackItAll_Backend.Models
 
         public int chargingStations { get; set; }
 
-        public ICollection<Battery>? batteries {  get; set; }
-
-
+        public Collection<BatteryDto> batteries { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿using backend.Models;
+﻿using AutoMapper;
+using backend.Models;
+using HackItAll_Backend.DTOs.Station;
 using HackItAll_Backend.Models;
 using HackItAll_Backend.Repositories;
 
@@ -7,15 +9,25 @@ namespace HackItAll_Backend.Services
     public class StationService
     {
         private readonly StationRepository _stationRepository;
+        private readonly IMapper _mapper;
 
-        public StationService(StationRepository stationRepository)
+        public StationService(StationRepository stationRepository, 
+            IMapper mapper)
         {
             _stationRepository = stationRepository;
+            _mapper = mapper;
         }
 
         public async Task<List<Station>> GetAll()
         {
-            return await _stationRepository.GetAllAsync();
+             List<Station> stations = await _stationRepository.GetWithBatteriesAsync();
+            return stations;
+        }
+
+        public async Task<List<StationWithBatteriesDto>> GetAllWithBatteries()
+        {
+            List<Station> stations = await _stationRepository.GetWithBatteriesAsync();
+            return _mapper.Map<List<StationWithBatteriesDto>>(stations);
         }
 
         public async Task Create(Station station)

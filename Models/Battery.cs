@@ -1,5 +1,6 @@
 ﻿using backend.Models.Base;
 using MessagePack;
+using System.Text.Json.Serialization;
 
 namespace HackItAll_Backend.Models
 {
@@ -13,7 +14,8 @@ namespace HackItAll_Backend.Models
 
         public State state { get; set; }
 
-        public Station station { get; set; }
+        [JsonIgnore]
+        public Station? station { get; set; }
 
         public Guid stationId { get; set; }
 
@@ -21,14 +23,13 @@ namespace HackItAll_Backend.Models
 
         public Reservation? reservation { get; set; }
 
-        public Battery() { }
+       
 
-        public enum State: int
-        {
-            STORED,
-            CHARGING,
-            RESERVED
-        }
-
+    }
+    public enum State : int
+    {
+        STORED,
+        CHARGING,
+        RESERVED
     }
 }
